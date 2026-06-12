@@ -94,14 +94,13 @@ export class Localization<Langs extends string = string> {
   }
 
   getLocalized<T extends LocaleRecord<Langs>>(
-    localeObj: T,
-    params?: ExtractParams<T, Langs>,
+    localeObj: LocaleRecord<Langs, T>,
+    params?: ExtractParams<typeof localeObj, Langs>,
   ): string {
     if (!localeObj) {
       throw new LocalizationError("Locale object is required");
     }
 
-    // Теперь TypeScript знает, что params может содержать lang
     const lang =
       (params as BaseParams<Langs> | undefined)?.lang || this.currentLanguage;
 
