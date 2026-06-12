@@ -1,0 +1,28 @@
+{
+  "name": "localaze-it",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ktoYaTako/localaze-it#readme",
+  "bugs": {
+    "url": "https://github.com/ktoYaTako/localaze-it/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktoYaTako/localaze-it.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "ts-loader": "^9.6.0",
+    "typescript": "^6.0.3"
+  }
+}
