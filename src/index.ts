@@ -1,4 +1,4 @@
-import { Localization } from "./localization";
+import { Localization } from "./Localization";
 import {
   LocalizationContext,
   LocalizationProvider,

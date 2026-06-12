@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from "react";
-import { Localization } from "./localization";
+import { Localization } from "./Localization";
 import { LocalizationConfig } from "./types";
 
 export const LocalizationContext = createContext<Localization<any> | null>(
