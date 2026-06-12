@@ -3,7 +3,7 @@ import {
   LocalizationContext,
   LocalizationProvider,
   useLocalization,
-} from "./react";
+} from "./localize-it";
 import {
   ExtractParams,
   LocaleRecord,

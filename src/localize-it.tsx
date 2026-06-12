@@ -28,7 +28,7 @@ export function LocalizationProvider<Langs extends string>({
   );
 }
 
-export function useLocalization<Langs extends string>() {
+export function useLocalization<Langs extends string>(): Localization<Langs> {
   const context = useContext(LocalizationContext);
 
   if (!context) {
