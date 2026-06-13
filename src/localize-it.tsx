@@ -1,22 +1,18 @@
 import React, { createContext, useContext, ReactNode } from "react";
 import { Localization } from "./Localization";
-import { LocalizationConfig } from "./types";
+import { ELanguages } from "./types";
 
-export const LocalizationContext = createContext<Localization<any> | null>(
-  null,
-);
+export const LocalizationContext = createContext<Localization | null>(null);
 
-export function LocalizationProvider<Langs extends string>({
-  config,
+export function LocalizationProvider({
   initialLanguage,
   children,
 }: {
-  config: LocalizationConfig<Langs>;
-  initialLanguage: Langs;
+  initialLanguage: ELanguages;
   children: ReactNode;
 }) {
   const [localization] = React.useState(
-    () => new Localization(config, initialLanguage),
+    () => new Localization({ language: initialLanguage }),
   );
 
   return (
@@ -26,7 +22,7 @@ export function LocalizationProvider<Langs extends string>({
   );
 }
 
-export function useLocalization<Langs extends string>(): Localization<Langs> {
+export function useLocalization(): Localization {
   const context = useContext(LocalizationContext);
 
   if (!context) {
