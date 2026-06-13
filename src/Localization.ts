@@ -15,6 +15,12 @@ class LocalizationError extends Error {
   }
 }
 
+type ValidateExactKeys<T, K extends readonly string[]> = Exclude<keyof T, K[number]> extends never
+  ? K[number] extends keyof T
+    ? T
+    : never
+  : never;
+
 export class Localization<Langs extends string = string> {
   private config: LocalizationConfig<Langs>;
   private currentLanguage: Langs;
@@ -93,9 +99,9 @@ export class Localization<Langs extends string = string> {
     return value;
   }
 
-  getLocalized<T extends LocaleRecord<Langs>>(
-    localeObj: LocaleRecord<Langs, T>,
-    params?: ExtractParams<typeof localeObj, Langs>,
+  getLocalized<T extends Partial<Record<Langs, LocaleValue>>>(
+    localeObj: ValidateExactKeys<T, readonly Langs[]>,
+    params?: ExtractParams<ValidateExactKeys<T, readonly Langs[]>, Langs>,
   ): string {
     if (!localeObj) {
       throw new LocalizationError("Locale object is required");

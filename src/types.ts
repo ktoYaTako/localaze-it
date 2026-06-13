@@ -9,8 +9,11 @@ export type PluralForms = {
 
 export type LocaleValue<T = any> = string | ((data: T) => string) | PluralForms;
 
-export type LocaleRecord<Langs extends string, T = any> = {
-  [K in Langs]: LocaleValue<T>;
+export type LocaleRecord<
+  Langs extends readonly string[],
+  T = any,
+> = {
+  [K in Langs[number]]: LocaleValue<T>;
 };
 
 export interface BaseParams<Langs extends string> {
@@ -32,9 +35,9 @@ export interface PluralParams<Langs extends string> extends BaseParams<Langs> {
 }
 
 export type ExtractParams<
-  L extends LocaleRecord<string, any>,
+  L,
   Langs extends string,
-> = {
+> = L extends LocaleRecord<readonly string[], any> ? {
   [K in keyof L]: L[K] extends string
     ? StringParams<Langs>
     : L[K] extends (...args: infer P) => string
@@ -42,7 +45,7 @@ export type ExtractParams<
       : L[K] extends PluralForms
         ? PluralParams<Langs>
         : never;
-}[keyof L];
+}[keyof L] : never;
 
 export interface LocalizationConfig<Langs extends string> {
   languages: readonly Langs[];
