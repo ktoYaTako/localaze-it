@@ -1,4 +1,4 @@
-export { Localization } from "./Localization";
+export { Localization, LocalizationError } from "./Localization";
 export { LocalizationProvider, useLocalization } from "./localize-it";
 export { ELanguages } from "./types";
 export type {
