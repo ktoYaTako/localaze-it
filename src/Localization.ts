@@ -26,6 +26,10 @@ export class Localization {
     return this.language || this.getBrowserLanguage();
   }
 
+  public setLanguage(language: ELanguages): void {
+    this.language = language;
+  }
+
   public getBrowserLanguage(): ELanguages {
     return (navigator.language || ELanguages.en)
       .substring(0, 2)
